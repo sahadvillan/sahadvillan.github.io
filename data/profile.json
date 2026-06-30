@@ -1,7 +1,7 @@
 {
   "name": "Sahad Muhammed Villan",
   "location": "Freiburg, Germany",
-  "availability": "Open to medical AI roles and collaborations",
+  "availability": "",
   "intro": "Machine Learning Engineer building medical imaging and surgical AI systems.",
   "aboutLead": "I turn medical imaging research into systems that can be tested, explained, and deployed.",
   "aboutBody": "My work spans PyTorch, computer vision, uncertainty estimation, deployment, and medical hardware integration.",
