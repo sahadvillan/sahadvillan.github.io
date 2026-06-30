@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Blood cell detection with Deformable DETR, BCCD, tiled inference, and COCO evaluation by Sahad Muhammed Villan.">
+  <title>Blood Cell Detection | Sahad Muhammed Villan</title>
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body>
+  <header><div class="shell nav"><a class="brand" href="../../index.html">S<span>/</span></a><a class="back" href="../../index.html#work">← All projects</a></div></header>
+  <main>
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">MEDICAL MICROSCOPY · PROJECT 05</p>
+      <h1>Blood Cell Detection: The Platelet Problem</h1>
+      <p>Deformable DETR experiments for white cells, red cells, and small platelet detection.</p>
+      <div class="tags"><span>Deformable DETR</span><span>BCCD</span><span>PyTorch</span><span>COCO mAP</span><span>Tiled inference</span><a href="https://github.com/sahadvillan/blood-cell-detection" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>The hidden failure</h2>
+      <div class="content">
+        <p class="lead">Standard full-image inference performed well on larger cells but produced zero small-object AP for platelets in one evaluation run.</p>
+        <p>Rather than hiding that result, the project treated it as the central engineering problem. The pipeline moved from standard DETR experiments to Deformable DETR, then compared full-image inference with a 2×2 overlapping tile strategy.</p>
+        <h3>Reproducible workflow</h3>
+        <ul><li>Converted Pascal VOC annotations into COCO JSON with train, validation, and test splits.</li><li>Fine-tuned Deformable DETR for WBC, RBC, and Platelets.</li><li>Tested Albumentations, overlapping tiling, and class-aware NMS.</li><li>Generated COCO metrics, precision and recall curves, confusion matrices, and overlays.</li></ul>
+      </div>
+    </div></section>
+
+    <section class="evidence-section"><div class="shell">
+      <p class="eyebrow">TILING ABLATION · SAVED PROJECT REPORT</p>
+      <div class="comparison-table" role="table" aria-label="Standard versus tiled inference metrics">
+        <div class="comparison-head" role="row"><span>Metric</span><span>Standard</span><span>2×2 tiled</span><span>Change</span></div>
+        <div role="row"><span>mAP @ 0.50:0.95</span><b>0.601</b><b>0.599</b><em>−0.002</em></div>
+        <div role="row"><span>mAP @ 0.50</span><b>0.874</b><b>0.930</b><em class="positive">+0.056</em></div>
+        <div role="row"><span>Small-object AP</span><b>0.000</b><b>0.583</b><em class="positive">+0.583</em></div>
+        <div role="row"><span>Large-object AP</span><b>0.701</b><b>0.434</b><em class="negative">−0.267</em></div>
+      </div>
+      <div class="visual-grid chart-grid">
+        <figure class="evidence-figure"><img src="../../assets/blood-cell-pr-curve.png" alt="Precision and recall curves for white blood cells, red blood cells, and platelets."><figcaption>Class-wise precision and recall at IoU 0.50.</figcaption></figure>
+        <figure class="evidence-figure"><img src="../../assets/blood-cell-confusion-matrix.png" alt="Object detection confusion matrix for white blood cells, red blood cells, platelets, and background."><figcaption>The confusion matrix makes the background false-negative burden visible.</figcaption></figure>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>The result is a trade-off</h2>
+      <div class="content">
+        <h3>What improved</h3><p>Tiling increased mAP@50 and changed platelet AP from 0.000 to 0.583 in the saved ablation report. Magnifying each quadrant made very small cells visible to the detector’s feature hierarchy.</p>
+        <h3>What regressed</h3><p>Large-object AP fell from 0.701 to 0.434. Tile boundaries can split large white cells, and NMS cannot always reconstruct a clean full-object detection from partial views.</p>
+        <h3>Reporting caveat</h3><p>The archive contains multiple checkpoints and reports: the main README records mAP@50:95 of 0.519 and mAP@50 of 0.844, while the later tiling report records the comparison above. These are retained as separate experimental runs rather than combined into one “best model” claim.</p>
+        <div class="status"><b>Research conclusion.</b> Tiling is valuable when platelet recall matters, but it is not a free improvement. A production design should use multi-scale validation, tile-edge handling, and per-class operating thresholds.</div>
+      </div>
+    </div></section>
+
+    <section class="next"><div class="shell"><p>Featured surgical AI project</p><h2>OR Lens</h2><a href="../or-lens/index.html">Open project ↗</a></div></section>
+  </main>
+  <footer><div class="shell">Sahad Muhammed Villan · Freiburg, Germany</div></footer>
+</body>
+</html>

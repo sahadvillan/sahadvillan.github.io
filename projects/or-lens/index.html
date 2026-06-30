@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OR Lens is a research-grade evaluation and failure-analysis pipeline for surgical video AI.">
+  <meta name="theme-color" content="#092d35">
+  <meta property="og:title" content="OR Lens | Surgical video AI evaluation">
+  <meta property="og:description" content="Temporal evaluation, calibration, and failure review for surgical video models.">
+  <meta property="og:type" content="website">
+  <title>OR Lens | Surgical video AI evaluation</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="OR Lens home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>OR <strong>Lens</strong></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
+        <span></span><span></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <nav id="site-nav" class="site-nav" data-nav>
+        <a href="../../index.html">Portfolio</a>
+        <a href="#why">Why</a>
+        <a href="#system">System</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#film">Film</a>
+        <a href="#research">Research</a>
+        <a class="nav-cta" href="#contact">Project brief</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero section-dark">
+      <div class="hero-glow hero-glow-one"></div>
+      <div class="hero-glow hero-glow-two"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow"><span class="pulse"></span> Current project · independent research prototype</p>
+          <h1>See where surgical video AI <em>actually</em> fails.</h1>
+          <p class="hero-lede">OR Lens is my current build. It turns frame predictions into temporal evidence: phase stability, transition quality, calibration, and review-ready failure segments.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#film"><span class="play-icon">▶</span> Watch project film</a>
+            <a class="button button-ghost" href="#system">Explore the system <span>↘</span></a>
+          </div>
+          <div class="hero-meta" aria-label="Project scope">
+            <div><strong>Cholec80</strong><span>benchmark dataset</span></div>
+            <div><strong>7 phases</strong><span>frame + sequence review</span></div>
+            <div><strong>Open pipeline</strong><span>reproducible outputs</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-one" aria-label="Illustrative procedure evaluation interface">
+          <div class="interface-card">
+            <div class="interface-topbar">
+              <div class="interface-dots"><i></i><i></i><i></i></div>
+              <span>video_47 / phase analysis</span>
+              <span class="live-label">● EVALUATED</span>
+            </div>
+            <div class="interface-body">
+              <div class="mini-sidebar">
+                <span class="mini-logo"></span>
+                <i class="active"></i><i></i><i></i><i></i>
+              </div>
+              <div class="interface-content">
+                <div class="mini-head">
+                  <div><small>PROCEDURE TIMELINE</small><b>Ground truth vs prediction</b></div>
+                  <span>41:26</span>
+                </div>
+                <div class="timeline-label"><span>Truth</span><span>Prediction</span></div>
+                <div class="phase-track phase-track-truth">
+                  <i class="p1"></i><i class="p2"></i><i class="p3"></i><i class="p4"></i><i class="p5"></i><i class="p6"></i><i class="p7"></i>
+                </div>
+                <div class="phase-track phase-track-pred">
+                  <i class="p1"></i><i class="p2"></i><i class="error"></i><i class="p3"></i><i class="p4"></i><i class="p6"></i><i class="p7"></i>
+                </div>
+                <div class="chart-grid">
+                  <div class="confidence-chart">
+                    <small>CONFIDENCE OVER TIME</small>
+                    <svg viewBox="0 0 420 118" role="img" aria-label="Illustrative confidence chart">
+                      <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#62d5c5" stop-opacity=".28"/><stop offset="1" stop-color="#62d5c5" stop-opacity="0"/></linearGradient></defs>
+                      <path class="gridline" d="M0 24H420M0 58H420M0 92H420"/>
+                      <path class="area" d="M0 105 L0 38 L28 32 L54 47 L81 30 L108 35 L135 27 L163 31 L190 72 L218 82 L245 41 L272 32 L299 37 L326 29 L354 43 L382 31 L420 26 L420 105Z"/>
+                      <path class="line" d="M0 38 L28 32 L54 47 L81 30 L108 35 L135 27 L163 31 L190 72 L218 82 L245 41 L272 32 L299 37 L326 29 L354 43 L382 31 L420 26"/>
+                      <circle class="alert-point" cx="218" cy="82" r="5"/>
+                    </svg>
+                  </div>
+                  <div class="failure-callout">
+                    <small>REVIEW FLAG</small>
+                    <b>18 sec</b>
+                    <span>persistent phase confusion</span>
+                    <div class="failure-meter"><i></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-note note-one"><span>01</span> Temporal-first metrics</div>
+          <div class="floating-note note-two"><span>02</span> Review-ready failures</div>
+        </div>
+      </div>
+      <div class="shell trust-row reveal delay-two">
+        <span>Built around</span>
+        <b>Cholec80</b><i></i><b>PyTorch</b><i></i><b>Streamlit</b><i></i><b>Temporal metrics</b><i></i><b>Failure mining</b>
+      </div>
+    </section>
+
+    <section id="why" class="section section-light">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow eyebrow-dark">The evaluation gap</p>
+            <h2>A high frame score can hide a bad surgical sequence.</h2>
+          </div>
+          <p>Aggregate scores can hide flicker, late transitions, and confident errors.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="problem-card reveal">
+            <span class="card-index">01</span>
+            <div class="problem-icon flicker-icon"><i></i><i></i><i></i><i></i><i></i></div>
+            <h3>Prediction flicker</h3>
+            <p>Frame labels can oscillate rapidly even when aggregate accuracy appears acceptable.</p>
+          </article>
+          <article class="problem-card reveal delay-one">
+            <span class="card-index">02</span>
+            <div class="problem-icon boundary-icon"><i></i><b></b></div>
+            <h3>Boundary errors</h3>
+            <p>Late or premature phase transitions matter operationally, but disappear inside frame averages.</p>
+          </article>
+          <article class="problem-card reveal delay-two">
+            <span class="card-index">03</span>
+            <div class="problem-icon confidence-icon"><span>92%</span><i></i></div>
+            <h3>Confident mistakes</h3>
+            <p>A wrong answer delivered with high certainty is precisely where human review becomes valuable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="system" class="section section-paper">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow eyebrow-dark">One reproducible workflow</p>
+          <h2>From surgical video to evidence.</h2>
+          <p class="heading-copy">A modular pipeline that separates data preparation, inference, evaluation, and qualitative review.</p>
+        </div>
+        <div class="pipeline reveal">
+          <article>
+            <span>01</span><div class="pipe-icon ingest"><i></i><i></i><i></i></div>
+            <h3>Ingest</h3><p>Stream videos, align frame indices, normalise phase annotations.</p>
+          </article>
+          <div class="pipe-arrow">→</div>
+          <article>
+            <span>02</span><div class="pipe-icon infer"><i></i><i></i><i></i></div>
+            <h3>Infer</h3><p>Batch GPU inference with structured probabilities and latency.</p>
+          </article>
+          <div class="pipe-arrow">→</div>
+          <article>
+            <span>03</span><div class="pipe-icon validate"><i></i><i></i></div>
+            <h3>Validate</h3><p>Frame, segment, temporal stability, and calibration metrics.</p>
+          </article>
+          <div class="pipe-arrow">→</div>
+          <article>
+            <span>04</span><div class="pipe-icon review"><i></i><i></i><i></i></div>
+            <h3>Review</h3><p>Rank persistent failures and inspect procedure-level timelines.</p>
+          </article>
+        </div>
+        <div class="principles-grid">
+          <div class="principle reveal"><small>DESIGN PRINCIPLE</small><b>Video-level split integrity</b><p>Train, validation, and held-out test procedures remain isolated.</p></div>
+          <div class="principle reveal delay-one"><small>DESIGN PRINCIPLE</small><b>Sequence-aware reporting</b><p>Temporal metrics are computed within each procedure, then aggregated.</p></div>
+          <div class="principle reveal delay-two"><small>DESIGN PRINCIPLE</small><b>Auditable artifacts</b><p>Predictions, checkpoints, reports, metadata, and review queues travel together.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence" class="section section-dark evidence-section">
+      <div class="shell">
+        <div class="section-heading section-heading-dark reveal">
+          <p class="eyebrow">Held-out evidence</p>
+          <h2>One model. Forty unseen procedures. More than one metric.</h2>
+          <p class="heading-copy">The final Kaggle run populates these cards. Until then, results remain marked as training.</p>
+        </div>
+        <div class="evidence-grid reveal">
+          <div class="evidence-card evidence-primary">
+            <span>FRAME ACCURACY</span><b data-result="accuracy">Training</b><small data-result-note="accuracy">held-out videos 41 to 80</small>
+          </div>
+          <div class="evidence-card"><span>MACRO F1</span><b data-result="macro_f1">Training</b><small>equal weight per phase</small></div>
+          <div class="evidence-card"><span>EDIT SCORE</span><b data-result="edit_score">Training</b><small>sequence similarity</small></div>
+          <div class="evidence-card"><span>SEGMENTAL F1@50</span><b data-result="segmental_f1">Training</b><small>phase segment overlap</small></div>
+          <div class="evidence-card"><span>CALIBRATION ERROR</span><b data-result="ece">Training</b><small>lower is better</small></div>
+        </div>
+
+        <div class="dashboard-showcase reveal">
+          <div class="showcase-copy">
+            <p class="eyebrow">OR Lens dashboard</p>
+            <h3>Move from leaderboard to review queue in a few clicks.</h3>
+            <p>The interface makes model behaviour legible at three levels: cohort, procedure, and failure segment.</p>
+            <ul>
+              <li><span>✓</span> Normalised confusion and per-phase F1</li>
+              <li><span>✓</span> Procedure-level performance outliers</li>
+              <li><span>✓</span> Confidence calibration and high-confidence errors</li>
+              <li><span>✓</span> Exportable failure-review queue</li>
+            </ul>
+            <a class="text-link" href="#film">See it in the project film <span>↗</span></a>
+          </div>
+          <div class="browser-frame" aria-label="Dashboard preview">
+            <div class="browser-bar"><i></i><i></i><i></i><span>localhost / or-lens</span></div>
+            <div class="browser-content">
+              <aside><b>OR Lens</b><span></span><span></span><span></span></aside>
+              <div class="browser-main">
+                <div class="dash-title"><small>CHOLEC80 · HELD-OUT EVALUATION</small><b>Phase recognition, under the microscope.</b></div>
+                <div class="dash-metrics"><i><small>ACCURACY</small><b>Pending</b></i><i><small>MACRO F1</small><b>Pending</b></i><i><small>FLICKER</small><b>Pending</b></i><i><small>COVERAGE</small><b>40</b></i></div>
+                <div class="dash-panels">
+                  <div class="matrix"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="bars"><i style="--w:82%"></i><i style="--w:70%"></i><i style="--w:64%"></i><i style="--w:76%"></i><i style="--w:58%"></i><i style="--w:68%"></i><i style="--w:73%"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="film" class="section film-section">
+      <div class="shell film-grid">
+        <div class="film-copy reveal">
+          <p class="eyebrow eyebrow-dark">The project film</p>
+          <h2>Two minutes from problem to proof.</h2>
+          <p>The final film will combine the evaluation story, real held-out results, dashboard walkthrough, and a transparent statement of research scope.</p>
+          <div class="film-chapters">
+            <span><b>00:00</b> The evaluation gap</span>
+            <span><b>00:22</b> Pipeline architecture</span>
+            <span><b>00:52</b> Held-out evidence</span>
+            <span><b>01:18</b> Failure review</span>
+            <span><b>01:45</b> Product direction</span>
+          </div>
+        </div>
+        <div class="video-shell reveal delay-one" data-video-shell>
+          <video controls preload="metadata" playsinline data-project-video aria-label="OR Lens project film"></video>
+          <div class="video-placeholder" data-video-placeholder>
+            <div class="placeholder-orbit"><i></i><i></i><span>▶</span></div>
+            <b>Project film awaiting final Kaggle outputs</b>
+            <p>The page is ready. The film will be rendered after real metrics are available.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section research-section">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div>
+            <p class="eyebrow eyebrow-dark">Research foundations</p>
+            <h2>Built on the work that moved surgical video understanding forward.</h2>
+          </div>
+          <p>OR Lens is an independent implementation and evaluation project. These primary papers inform its dataset choice, temporal metrics, model roadmap, and definition of reliable phase recognition.</p>
+        </div>
+
+        <div class="paper-grid">
+          <a class="paper-card reveal" href="https://doi.org/10.1109/TMI.2016.2593957" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>DATASET + BASELINE</span><b>2016</b></div>
+            <h3>EndoNet: A Deep Architecture for Recognition Tasks on Laparoscopic Videos</h3>
+            <p>Twinanda et al. Introduced the Cholec80 benchmark and a joint tool-presence and surgical-phase recognition architecture.</p>
+            <div class="paper-footer"><span>IEEE Transactions on Medical Imaging</span><i>↗</i></div>
+          </a>
+          <a class="paper-card reveal delay-one" href="https://doi.org/10.1007/s11548-020-02158-9" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>TEMPORAL MODELLING</span><b>2020</b></div>
+            <h3>TeCNO: Surgical Phase Recognition with Multi-Stage Temporal Convolutional Networks</h3>
+            <p>Czempiel et al. demonstrated how multi-stage temporal modelling improves phase recognition beyond isolated frame classification.</p>
+            <div class="paper-footer"><span>International Journal of CARS</span><i>↗</i></div>
+          </a>
+          <a class="paper-card reveal" href="https://arxiv.org/abs/2305.08989" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>LONG-RANGE CONTEXT</span><b>2023</b></div>
+            <h3>LoViT: Long Video Transformer for Surgical Phase Recognition</h3>
+            <p>Combines short- and long-range temporal information for online recognition across long surgical procedures.</p>
+            <div class="paper-footer"><span>arXiv:2305.08989</span><i>↗</i></div>
+          </a>
+          <a class="paper-card reveal delay-one" href="https://openaccess.thecvf.com/content/ICCV2023/papers/Liu_SKiT_A_Fast_Key_Information_Video_Transformer_for_Online_Surgical_ICCV_2023_paper.pdf" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>ONLINE RECOGNITION</span><b>2023</b></div>
+            <h3>SKiT: A Fast Key Information Video Transformer for Online Surgical Phase Recognition</h3>
+            <p>Liu et al. introduced key-information memory for efficient online reasoning over long surgical procedures.</p>
+            <div class="paper-footer"><span>ICCV · CVF Open Access</span><i>↗</i></div>
+          </a>
+          <a class="paper-card reveal" href="https://arxiv.org/abs/2403.05949" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>FOUNDATION MODEL</span><b>2024</b></div>
+            <h3>GSViT: General Surgery Vision Transformer</h3>
+            <p>Explores surgical video pre-training at scale and motivates the roadmap toward verified, architecture-faithful model adapters.</p>
+            <div class="paper-footer"><span>arXiv:2403.05949</span><i>↗</i></div>
+          </a>
+          <a class="paper-card reveal delay-one" href="https://papers.miccai.org/miccai-2024/paper/1220_paper.pdf" target="_blank" rel="noreferrer">
+            <div class="paper-top"><span>HIERARCHICAL ATTENTION</span><b>2024</b></div>
+            <h3>Surgformer: Surgical Transformer with Hierarchical Temporal Attention</h3>
+            <p>Uses multi-resolution temporal aggregation to capture global and local context in surgical phase recognition.</p>
+            <div class="paper-footer"><span>MICCAI Proceedings</span><i>↗</i></div>
+          </a>
+        </div>
+
+        <div class="citation-note reveal">
+          <span>Scope note</span>
+          <p>Citations provide methodological context. They do not imply affiliation or endorsement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section founder-section">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div><p class="eyebrow eyebrow-dark">Why this matters to a startup</p><h2>Evaluation infrastructure is product infrastructure.</h2></div>
+          <p>For surgical AI teams, the path from a good model to a trustworthy workflow runs through repeatable evidence and efficient failure review.</p>
+        </div>
+        <div class="value-grid">
+          <article class="reveal"><span>01</span><h3>Faster model comparison</h3><p>One schema for predictions, temporal behaviour, calibration, and latency.</p></article>
+          <article class="reveal delay-one"><span>02</span><h3>Focused clinical review</h3><p>Surface the segments that deserve expert attention instead of replaying entire procedures.</p></article>
+          <article class="reveal delay-two"><span>03</span><h3>Evidence for iteration</h3><p>Turn failure patterns into concrete data, model, and workflow improvements.</p></article>
+          <article class="reveal delay-three"><span>04</span><h3>Reproducible reporting</h3><p>Keep dataset splits, runtime metadata, predictions, and reports auditable.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="closing section-dark">
+      <div class="shell closing-grid">
+        <div class="reveal">
+          <p class="eyebrow">Personal research project</p>
+          <h2>Building better ways to understand surgical AI behaviour.</h2>
+          <p>OR Lens is an independent portfolio project exploring evaluation, temporal reliability, and human-review tooling for surgical video models.</p>
+        </div>
+        <div class="closing-card reveal delay-one">
+          <span>PROJECT STATUS</span>
+          <b data-project-status>Real-data evaluation in progress</b>
+          <p>Final metrics and project film will publish after the held-out Cholec80 run completes.</p>
+          <a class="button button-primary" href="mailto:sahadmhd1@gmail.com">Discuss the project <span>↗</span></a>
+          <small>Sahad Muhammed Villan · Freiburg, Germany</small>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div class="brand brand-footer"><span class="brand-mark"><i></i><i></i><i></i></span><span>OR <strong>Lens</strong></span></div>
+      <p>Research prototype · Not a medical device · Not for clinical decision-making</p>
+      <span>© <span data-year></span></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

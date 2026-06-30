@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A CoTracker3 and MC-Dropout prototype for surgical tissue localization, deformation tracking, and temporal failure analysis by Sahad Muhammed Villan.">
+  <title>Surgical Tissue Tracking | Sahad Muhammed Villan</title>
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body>
+  <header><div class="shell nav"><a class="brand" href="../../index.html">S<span>/</span></a><a class="back" href="../../index.html#work">← All projects</a></div></header>
+  <main>
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">MEDICAL COMPUTER VISION · PROJECT 02</p>
+      <h1>Surgical Tissue Localization &amp; Deformation Tracking</h1>
+      <p>A research prototype that tracks deforming tissue, estimates when those tracks become unreliable, and converts point trajectories into temporal and deformation evidence.</p>
+      <div class="tags"><span>PyTorch</span><span>CoTracker3</span><span>MC Dropout</span><span>Temporal analysis</span><span>Local strain</span><a href="https://github.com/sahadvillan/Tissue_Localization" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>The surgical problem</h2>
+      <div class="content">
+        <p class="lead">Tissue is elastic, instruments create occlusions, and endoscopic lighting changes as the camera moves. A point tracker can look plausible while silently drifting.</p>
+        <p>The prototype was designed around a more useful question than “did the point move?”: <strong>can the downstream system understand how much to trust that motion?</strong></p>
+        <h3>Pipeline</h3>
+        <ol class="steps">
+          <li><b>Sample</b><span>50 candidate tissue points from the initial segmentation mask.</span></li>
+          <li><b>Track</b><span>Run CoTracker3 across overlapping 50-frame blocks with 16-frame overlap.</span></li>
+          <li><b>Estimate uncertainty</b><span>Aggregate three stochastic MC-Dropout passes into mean trajectories and positional variance.</span></li>
+          <li><b>Analyse behaviour</b><span>Measure visibility, smoothness, cumulative drift, disappearance/recovery events, local motion, and neighbour-based strain.</span></li>
+          <li><b>Communicate failure</b><span>Render reliability halos, augmented video overlays, and a temporal-analysis dashboard.</span></li>
+        </ol>
+      </div>
+    </div></section>
+
+    <section class="media-section"><div class="shell">
+      <p class="eyebrow">VIDEO OUTPUTS</p>
+      <div class="video-grid">
+        <figure class="video-card">
+          <video controls playsinline preload="metadata" poster="op1_standard_tracking_poster.jpg">
+            <source src="op1_standard_tracking_web.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <figcaption><strong>Tissue point tracking</strong><span>50 sampled points across the OP1 preview.</span></figcaption>
+        </figure>
+        <figure class="video-card">
+          <video controls playsinline preload="metadata" poster="phantom_view_op1_poster.jpg">
+            <source src="phantom_view_op1_web.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <figcaption><strong>Instrument orientation</strong><span>Tip visibility and orientation overlay.</span></figcaption>
+        </figure>
+      </div>
+    </div></section>
+
+    <section class="evidence-section"><div class="shell">
+      <p class="eyebrow">VERIFIED PROTOTYPE RUN · OP1 PREVIEW</p>
+      <div class="metric-grid">
+        <article><strong>200</strong><span>frames evaluated</span></article>
+        <article><strong>50</strong><span>candidate tissue points</span></article>
+        <article><strong>73.6%</strong><span>mean track visibility</span></article>
+        <article><strong>76%</strong><span>visible on final frame</span></article>
+        <article><strong>5.86 px</strong><span>mean positional uncertainty</span></article>
+        <article><strong>83.8 px</strong><span>median final displacement</span></article>
+      </div>
+      <figure class="evidence-figure">
+        <img src="../../assets/tissue-localization-dashboard.png" alt="Six-panel dashboard showing trajectory smoothness, tissue strain, track survival, cumulative drift, disappearance events, and final displacement for the OP1 preview.">
+        <figcaption>Generated analysis for 50 points over the first 200 OP1 frames. The dashboard is an engineering diagnostic, not a clinical-performance claim.</figcaption>
+      </figure>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>What the evidence says</h2>
+      <div class="content">
+        <h3>Useful signals</h3>
+        <ul>
+          <li>Visibility remained measurable across the preview, ending with 38 of 50 points visible.</li>
+          <li>MC-Dropout produced a mean positional standard deviation of 5.86 px; the 95th percentile reached 23.74 px, supporting point-level reliability cues.</li>
+          <li>The temporal layer recorded 246 disappearance transitions and 234 recoveries, exposing instability that a final-frame metric would hide.</li>
+          <li>Local strain was estimated from changes in each point’s nearest-neighbour geometry, creating a deformation signal rather than only a displacement trace.</li>
+        </ul>
+        <h3>What did not yet validate</h3>
+        <ul>
+          <li>The initial smoothness and drift thresholds rejected every trajectory. The filtering rule therefore needs scale-aware calibration before it can be presented as a quality gate.</li>
+          <li>Tool proximity and local strain showed a weak preliminary correlation (r = 0.09). The current run does not support a relationship claim.</li>
+          <li>The evidence covers 200 of 1,122 OP1 frames with three stochastic passes. OP2 to OP4 and ground-truth endpoint error remain future work.</li>
+        </ul>
+        <div class="status"><b>Evidence boundary.</b> Metrics above were recomputed from the saved OP1 arrays in the project archive. They describe a technical prototype, not a clinically validated navigation system.</div>
+      </div>
+    </div></section>
+
+    <section class="section compact-section"><div class="shell grid">
+      <h2>System modules</h2>
+      <div class="content module-grid">
+        <article><code>tissue_localizer.py</code><p>Point sampling, block-wise sequence tracking, and result aggregation.</p></article>
+        <article><code>mc_dropout.py</code><p>Stochastic inference wrapper that keeps dropout active during evaluation.</p></article>
+        <article><code>temporal_analyzer.py</code><p>Smoothness, drift, survival, occlusion events, motion vectors, and local strain.</p></article>
+        <article><code>visualize_temporal.py</code><p>Diagnostic dashboard and temporal failure visualization.</p></article>
+        <article><code>annotate_cotton.py</code><p>Gradio polygon tool for selecting, undoing, closing, and saving cotton-boundary annotations.</p></article>
+        <article><code>Cutie + OP4 notebooks</code><p>Prepared full-sequence mask and boundary propagation experiments for 1,125 OP4 frames and 45 supplied masks; completed quantitative results are not yet present.</p></article>
+      </div>
+    </section>
+
+    <section class="next"><div class="shell"><p>Next project</p><h2>Brain Tumor Detection &amp; Segmentation</h2><a href="../brain-tumor-mri/index.html">Open project ↗</a></div></section>
+  </main>
+  <footer><div class="shell">Sahad Muhammed Villan · Freiburg, Germany</div></footer>
+</body>
+</html>

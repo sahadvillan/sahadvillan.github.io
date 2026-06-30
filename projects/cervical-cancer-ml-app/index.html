@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Cervical cancer ML app prototype for cytology image classification, explainability, and accessible result explanation by Sahad Muhammed Villan.">
+  <title>Cervical Cancer ML App | Sahad Muhammed Villan</title>
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body>
+  <header><div class="shell nav"><a class="brand" href="../../index.html">S<span>/</span></a><a class="back" href="../../index.html#work">← All projects</a></div></header>
+  <main>
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">EXPLAINABLE HEALTHCARE AI · PROJECT 06</p>
+      <h1>Cervical Cancer ML App</h1>
+      <p>A small end-to-end prototype that makes cytology image classification easier to inspect, explain, and serve through an app interface.</p>
+      <div class="tags"><span>Cervical cytology</span><span>Image classification</span><span>Grad-CAM</span><span>FastAPI</span><span>Conversational UI</span><a href="https://github.com/sahadvillan/cervical-cancer-explinability" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div></section>
+
+    <section class="media-section"><div class="shell">
+      <p class="eyebrow">APP DEMO</p>
+      <div class="video-grid">
+        <figure class="video-card">
+          <video controls playsinline preload="metadata" poster="cervical-cancer-app-poster.jpg">
+            <source src="cervical-cancer-app-demo.mp4" type="video/mp4">
+          </video>
+          <figcaption><strong>Screen recording</strong><span>Upload, prediction, visual explanation, and assistant flow.</span></figcaption>
+        </figure>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>The project</h2>
+      <div class="content">
+        <p class="lead">The idea was simple: a model should not only return a class label. It should show why the result was produced.</p>
+        <p>The app takes a cervical cell image, runs classification, visualizes the influential region, and gives a plain-language explanation for non-technical users. The goal is decision support, not replacement of clinical judgement.</p>
+        <h3>System pieces</h3>
+        <ul><li>Image classifier for cervical cytology cell classes.</li><li>Grad-CAM style visual explanation for model attention.</li><li>Assistant layer for natural-language result explanation.</li><li>API backend for serving prediction and explanation outputs.</li><li>Experiment tracking mindset for training runs and metrics.</li></ul>
+      </div>
+    </div></section>
+
+    <section class="evidence-section"><div class="shell">
+      <p class="eyebrow">TECHNICAL SCOPE</p>
+      <div class="metric-grid">
+        <article><span>Task</span><strong>5-class</strong><span>cytology classification</span></article>
+        <article><span>Interface</span><strong>Upload</strong><span>prediction plus explanation</span></article>
+        <article><span>Deployment path</span><strong>API</strong><span>backend-ready prototype</span></article>
+      </div>
+      <div class="module-grid">
+        <article><code>MODEL</code><p>Classification pipeline for SIPaKMeD-style cervical cell images.</p></article>
+        <article><code>EXPLAINABILITY</code><p>Heatmap output to make the decision region visible.</p></article>
+        <article><code>BACKEND</code><p>Prediction service structure for app integration.</p></article>
+        <article><code>ASSISTANT</code><p>Conversational explanation layer for users who are not ML engineers.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>What it shows</h2>
+      <div class="content">
+        <h3>Trust needs an interface</h3>
+        <p>In healthcare AI, the output has to be inspectable. This project connects prediction, visual evidence, and explanation in one user flow.</p>
+        <h3>Engineering value</h3>
+        <p>It demonstrates the full loop: model training, inference, explainability, backend serving, and a front-end experience that a non-technical user can understand.</p>
+        <div class="status"><b>Portfolio angle.</b> This is useful as a compact example of explainable AI and product thinking around medical ML systems.</div>
+      </div>
+    </div></section>
+
+    <section class="next"><div class="shell"><p>Next project</p><h2>Brain Tumor Detection &amp; Segmentation</h2><a href="../brain-tumor-mri/index.html">Open project ↗</a></div></section>
+  </main>
+  <footer><div class="shell">Sahad Muhammed Villan · Freiburg, Germany</div></footer>
+</body>
+</html>

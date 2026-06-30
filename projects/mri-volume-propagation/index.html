@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Interactive MRI volume segmentation and slice propagation using SAM, XMem, DICOM, and Gradio by Sahad Muhammed Villan.">
+  <title>Interactive MRI Volume Segmentation | Sahad Muhammed Villan</title>
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body>
+  <header><div class="shell nav"><a class="brand" href="../../index.html">S<span>/</span></a><a class="back" href="../../index.html#work">← All projects</a></div></header>
+  <main>
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">MEDICAL IMAGING · PROJECT 04</p>
+      <h1>Interactive MRI Volume Segmentation</h1>
+      <p>Prompt one MRI slice, propagate the mask through the volume, then review and export it.</p>
+      <div class="tags"><span>DICOM</span><span>NIfTI</span><span>Segment Anything</span><span>XMem</span><span>Gradio</span></div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>One annotation, many slices</h2>
+      <div class="content">
+        <p class="lead">Manual slice-by-slice segmentation is slow. The prototype uses SAM to create a seed mask and XMem’s memory mechanism to propagate it through the volume.</p>
+        <ol class="steps">
+          <li><b>Load</b><span>Accept NIfTI, DICOM ZIP, or NumPy volumes and navigate axial, sagittal, or coronal views.</span></li>
+          <li><b>Prompt</b><span>Place foreground points on a selected slice and generate a SAM mask.</span></li>
+          <li><b>Propagate</b><span>Use XMem to carry the seeded object mask across neighbouring slices.</span></li>
+          <li><b>Review</b><span>Inspect overlays, contours, slice coverage, and abrupt inter-slice changes.</span></li>
+          <li><b>Export</b><span>Save the volume mask as NIfTI, NumPy, or a zipped PNG stack.</span></li>
+        </ol>
+      </div>
+    </div></section>
+
+    <section class="evidence-section"><div class="shell">
+      <p class="eyebrow">SAVED DICOM DEMONSTRATION · 125 AXIAL SLICES</p>
+      <div class="visual-grid">
+        <figure class="evidence-figure"><img src="../../assets/mri-propagation-frame.png" alt="MRI slice 61 of 125 with a propagated brain-region mask and contour."><figcaption>Example propagated mask from the saved 125-slice DICOM demonstration.</figcaption></figure>
+        <div class="metric-grid metric-grid-two">
+          <article><strong>113 / 125</strong><span>slices with tracked masks</span></article>
+          <article><strong>0.954</strong><span>mean consecutive-slice Dice</span></article>
+          <article><strong>0.922</strong><span>mean consecutive-slice IoU</span></article>
+          <article><strong>13.6 px</strong><span>mean boundary Hausdorff distance</span></article>
+        </div>
+      </div>
+      <figure class="evidence-figure"><img src="../../assets/mri-propagation-report.png" alt="MRI mask propagation report with consecutive-slice Dice, IoU, Hausdorff distance, coverage, and summary statistics."><figcaption>Agreement between consecutive predicted slices. This is a consistency diagnostic, not comparison with expert ground truth.</figcaption></figure>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>What is demonstrated</h2>
+      <div class="content">
+        <h3>Product-shaped engineering</h3>
+        <ul><li>Modular volume loader, mask store, SAM wrapper, XMem propagator, and export layer.</li><li>Lazy model loading and automatic CUDA/CPU selection.</li><li>An interactive Gradio workflow rather than a notebook-only proof of concept.</li><li>An anatomy-aware cleanup path for thresholding, hole filling, continuity scoring, and component selection.</li></ul>
+        <h3>Evidence boundary</h3>
+        <p>High consecutive-slice overlap shows continuity, but adjacent anatomy is naturally similar. Without expert masks, these values cannot establish segmentation accuracy or clinical utility. The interactive backward-propagation path also needs a final seed-state regression test before release.</p>
+        <div class="status"><b>Prototype status.</b> Working interface, saved DICOM outputs, and consistency diagnostics are present. Expert-labelled validation and usability testing remain open.</div>
+      </div>
+    </div></section>
+
+    <section class="next"><div class="shell"><p>Next project</p><h2>Blood Cell Detection</h2><a href="../blood-cell-detection/index.html">Open project ↗</a></div></section>
+  </main>
+  <footer><div class="shell">Sahad Muhammed Villan · Freiburg, Germany</div></footer>
+</body>
+</html>

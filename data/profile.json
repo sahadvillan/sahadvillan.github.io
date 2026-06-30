@@ -1,0 +1,106 @@
+{
+  "name": "Sahad Muhammed Villan",
+  "location": "Freiburg, Germany",
+  "availability": "Open to medical AI roles and collaborations",
+  "intro": "Machine Learning Engineer building medical imaging and surgical AI systems.",
+  "aboutLead": "I turn medical imaging research into systems that can be tested, explained, and deployed.",
+  "aboutBody": "My work spans PyTorch, computer vision, uncertainty estimation, deployment, and medical hardware integration.",
+  "projects": [
+    {
+      "slug": "or-lens",
+      "title": "OR Lens",
+      "summary": "Evaluation and failure analysis for surgical video models.",
+      "year": "2026",
+      "href": "projects/or-lens/index.html",
+      "tags": ["Surgical video", "PyTorch", "Evaluation", "Product design"],
+      "visible": true
+    },
+    {
+      "slug": "surgical-tissue-tracking",
+      "title": "Surgical Tissue Localization & Deformation Tracking",
+      "summary": "CoTracker3 tissue tracking with uncertainty, drift, and strain analysis.",
+      "year": "2025",
+      "href": "projects/surgical-tissue-tracking/index.html",
+      "color": "#283f4a",
+      "video": "projects/surgical-tissue-tracking/surgical_gps_op1_web.mp4",
+      "poster": "projects/surgical-tissue-tracking/surgical_gps_op1_poster.jpg",
+      "videoLabel": "Surgical GPS tissue and instrument tracking preview",
+      "tags": ["Surgical AI", "CoTracker3", "MC Dropout", "Deformation"],
+      "visible": true
+    },
+    {
+      "slug": "brain-tumor-mri",
+      "title": "Brain Tumor Detection & Segmentation",
+      "summary": "ResNet and ResUNet workflow for MRI detection and segmentation.",
+      "year": "2024",
+      "href": "projects/brain-tumor-mri/index.html",
+      "color": "#55435f",
+      "tags": ["MRI", "ResNet", "ResUNet", "Segmentation"],
+      "visible": true
+    },
+    {
+      "slug": "mri-volume-propagation",
+      "title": "Interactive MRI Volume Segmentation",
+      "summary": "SAM and XMem tool for propagating MRI masks through a volume.",
+      "year": "2026",
+      "href": "projects/mri-volume-propagation/index.html",
+      "color": "#253044",
+      "tags": ["DICOM", "SAM", "XMem", "Gradio"],
+      "visible": true
+    },
+    {
+      "slug": "blood-cell-detection",
+      "title": "Blood Cell Detection",
+      "summary": "Deformable DETR experiments focused on small platelet detection.",
+      "year": "2026",
+      "href": "projects/blood-cell-detection/index.html",
+      "color": "#522d34",
+      "tags": ["Deformable DETR", "BCCD", "Small objects", "COCO evaluation"],
+      "visible": true
+    }
+  ],
+  "experience": [
+    {
+      "period": "May 2025 to Oct 2025",
+      "role": "Master Thesis Student, Medical Imaging & AI",
+      "company": "SCHÖLLY FIBEROPTIC GMBH",
+      "location": "Denzlingen, Germany",
+      "highlights": [
+        "Built a PyTorch pipeline for tissue oxygen saturation estimation, reducing MAE by 25 to 30%.",
+        "Added MC Dropout uncertainty estimation with over 92% calibrated coverage and SHAP-based explanations.",
+        "Packaged the workflow with Docker and Azure ML and delivered a clinician-facing GUI."
+      ]
+    },
+    {
+      "period": "May 2024 to Oct 2024",
+      "role": "Project Intern, Medical Image Processing",
+      "company": "ICCAS, Innovation Center Computer Assisted Surgery",
+      "location": "Leipzig, Germany",
+      "highlights": [
+        "Developed Capsule Network approaches for hyperspectral image segmentation.",
+        "Benchmarked robustness under noise, camera motion, and illumination changes.",
+        "Introduced GitHub Actions checks for a more reproducible development workflow."
+      ]
+    },
+    {
+      "period": "Jul 2022 to Jul 2023",
+      "role": "Research & Development Engineer",
+      "company": "Ubio BioTechnology Systems Pvt Ltd (Startup)",
+      "location": "Kochi, India",
+      "highlights": [
+        "Developed quantitative OpenCV sensor-processing pipelines for diagnostic hardware.",
+        "Built low-latency FastAPI and Docker services for point-of-care assay readers."
+      ]
+    },
+    {
+      "period": "Mar 2020 to May 2022",
+      "role": "Engineering & Research Engineer (Intern)",
+      "company": "Ubio BioTechnology Systems Pvt Ltd (Startup)",
+      "location": "Kochi, India",
+      "highlights": [
+        "Automated feature localization with OpenCV and supported sensor calibration.",
+        "Contributed to verification, validation, and technical documentation across the device lifecycle."
+      ]
+    }
+  ]
+}

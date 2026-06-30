@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="IDR0097 pathology microscopy pipeline for segmentation, feature extraction, change scoring, and clustering by Sahad Muhammed Villan.">
+  <title>Pathology Cell-State Change Analysis | Sahad Muhammed Villan</title>
+  <link rel="stylesheet" href="../project.css">
+</head>
+<body>
+  <header><div class="shell nav"><a class="brand" href="../../index.html">S<span>/</span></a><a class="back" href="../../index.html#work">← All projects</a></div></header>
+  <main>
+    <section class="hero"><div class="shell">
+      <p class="eyebrow">PATHOLOGY MICROSCOPY · PROJECT 06</p>
+      <h1>Pathology Cell-State Change Analysis</h1>
+      <p>An IDR0097 pipeline for finding which cells changed, how strongly they changed, and whether those changes form measurable phenotypic groups.</p>
+      <div class="tags"><span>IDR0097</span><span>Cell segmentation</span><span>DINO features</span><span>UMAP</span><span>Clustering</span><a href="https://github.com/sahadvillan/drug-induced-phenotype-detection" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>The project</h2>
+      <div class="content">
+        <p class="lead">The goal was to convert microscopy image tiles into a readable cell-level change map.</p>
+        <p>The pipeline processes paired image tiles, segments nuclei and cells, extracts morphology and representation features, computes change scores, then groups similar cells with UMAP and clustering. The output is not just a model score. It is a visual audit trail: overlays, ranked cells, cluster profiles, and before/after nuclear-cytoplasmic ratio plots.</p>
+        <h3>Workflow</h3>
+        <ul><li>Loaded IDR0097 OME-TIFF tiles for timelapse and sequencing views.</li><li>Generated segmentation overlays and cell-size quality checks.</li><li>Extracted 1167-dimensional feature vectors per cell.</li><li>Computed cell-level change scores and DINO embedding distances.</li><li>Clustered cell states and compared sequencing profiles per cluster.</li></ul>
+      </div>
+    </div></section>
+
+    <section class="evidence-section"><div class="shell">
+      <p class="eyebrow">FINAL RUN SUMMARY</p>
+      <div class="metric-grid">
+        <article><span>Cells analysed</span><strong>1914</strong></article>
+        <article><span>Feature dimensions</span><strong>1167</strong></article>
+        <article><span>Clusters</span><strong>4</strong></article>
+      </div>
+      <div class="comparison-table" role="table" aria-label="Pathology clustering metrics">
+        <div class="comparison-head" role="row"><span>Metric</span><span>Value</span><span>Interpretation</span><span>Use</span></div>
+        <div role="row"><span>Silhouette score</span><b>0.5729</b><b>Good separation</b><em>Cluster quality</em></div>
+        <div role="row"><span>Davies-Bouldin score</span><b>0.5835</b><b>Good compactness</b><em>Cluster quality</em></div>
+        <div role="row"><span>Mean change score</span><b>0.2745</b><b>Baseline shift</b><em>Cell change</em></div>
+        <div role="row"><span>Top changed cells</span><b>383</b><b>Top 20%</b><em>Review set</em></div>
+      </div>
+      <div class="visual-grid chart-grid">
+        <figure class="evidence-figure"><img src="../../assets/pathology-heatmap-sidebygrid.png" alt="Cell change heatmap shown beside microscopy tiles."><figcaption>Cell-level change scores projected back onto microscopy tiles.</figcaption></figure>
+        <figure class="evidence-figure"><img src="../../assets/pathology-umap.png" alt="UMAP plot of clustered cell features."><figcaption>UMAP view of four detected cell-state clusters.</figcaption></figure>
+      </div>
+    </div></section>
+
+    <section class="section compact-section"><div class="shell">
+      <p class="eyebrow">VISUAL EVIDENCE</p>
+      <div class="visual-grid chart-grid">
+        <figure class="evidence-figure"><img src="../../assets/pathology-segmentation-overlays.png" alt="Segmentation overlays on microscopy image tiles."><figcaption>Segmentation overlays used to check whether downstream measurements were trustworthy.</figcaption></figure>
+        <figure class="evidence-figure"><img src="../../assets/pathology-top-changed-cells.png" alt="Top changed cell crops from pathology microscopy analysis."><figcaption>Top changed cells ranked for manual review.</figcaption></figure>
+      </div>
+    </div></section>
+
+    <section class="section"><div class="shell grid">
+      <h2>Why it matters</h2>
+      <div class="content">
+        <h3>More than a notebook</h3>
+        <p>The work turns raw microscopy into a reviewable analysis pipeline. Each stage leaves evidence: segmentation, features, rankings, cluster scores, and interpretable plots.</p>
+        <h3>Product angle</h3>
+        <p>The same structure can support pathology QA tools, assay-development dashboards, or research workflows where scientists need to inspect which cells changed and why.</p>
+        <div class="status"><b>Current state.</b> Working research pipeline with saved outputs from three processed tiles. Next step would be packaging it into a small dashboard with tile selection, cluster filtering, and exportable review sets.</div>
+      </div>
+    </div></section>
+
+    <section class="next"><div class="shell"><p>Related microscopy project</p><h2>Blood Cell Detection</h2><a href="../blood-cell-detection/index.html">Open project ↗</a></div></section>
+  </main>
+  <footer><div class="shell">Sahad Muhammed Villan · Freiburg, Germany</div></footer>
+</body>
+</html>

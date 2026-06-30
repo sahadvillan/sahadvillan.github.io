@@ -11,14 +11,15 @@ Open `http://localhost:4173`.
 
 ## Content structure
 
-- `data/profile.json` drives project cards, profile copy, and the experience timeline.
-- `projects/or-lens/` contains the complete OR Lens case study.
-- The other folders in `projects/` contain focused medical-AI case studies.
+- `index.html` is the homepage.
+- `assets/` contains images, figures, and the public CV PDF.
+- `projects/` contains the individual case-study pages.
+- `data/` contains profile metadata used by the site script.
 
-## Privacy boundary
+## Public CV
 
-Original CV, degree, reference, and experience PDFs are stored in the workspace-level `source_documents/` folder, outside this deployable website. The public page uses verified summaries only. Do not copy an original document into `portfolio/` without first removing signatures, addresses, dates of birth, phone numbers, matriculation numbers, and third-party contact details.
+The deployed website includes `assets/sahad-muhammed-villan-cv.pdf` so visitors can open the CV directly.
 
 ## Publishing
 
-Deploy the contents of this `portfolio/` directory to a static host such as GitHub Pages, Cloudflare Pages, or Netlify. Add approved screenshots and project videos when the source artifacts are ready.
+Deploy the contents of this folder to GitHub Pages, Cloudflare Pages, or Netlify.
